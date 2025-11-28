@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Red Room — Simples</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- particulas por trás -->
+  <canvas id="particles"></canvas>
+
+  <div class="wrap">
+    <header>
+  <div class="header-logo">
+    <img src="/imagens/logo.png" alt="Red Room logo">
+  </div>
+
+  <div class="header-text">
+    <h1>Red Room</h1>
+    <p>Sala oficial — comunidade IMVU</p>
+  </div>
+
+
+      <div class="socials">
+        <a class="social-btn" href="https://discord.gg/UsAE9zragB" title="Discord">Discord</a>
+        <a class="social-btn" href="https://instagram.com/redneonclub" title="Instagram">Instagram</a>
+        <a class="social-btn" href="https://go.imvu.com/chat/room-380770326-17" title="IMVU">IMVU</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <h2>Bem-vindo à Red Room</h2>
+          <p>Uma sala para encontros, música e eventos. Simples, moderna e feita para a comunidade.</p>
+          <div class="cta-row">
+            <a class="btn btn-join" href="https://go.imvu.com/chat/room-380770326-17" title="IMVU">ENTRAR NA SALA</a>
+            <button class="btn btn-info">Agenda</button>
+          </div>
+
+          <!-- CARROSSEL DE EVENTOS (mobile-friendly) -->
+          <div class="events-wrapper">
+            <h3 class="events-title">Próximos Eventos</h3>
+            <div class="carousel" id="eventsCarousel">
+              <button class="carousel-nav prev" data-action="prev" aria-label="Anterior">&lt;</button>
+              <div class="carousel-track" id="carouselTrack">
+                <!-- slides serão injetados via HTML estático abaixo -->
+                <article class="event-slide">
+                  <h4 class="event-name">Desfile Victoria Secrets</h4>
+                  <div class="event-meta">Em breve • 21:00</div>
+                  <p class="event-desc">Compre suas asas, façam seus registros! Evento para Mulheres e Gays ♥</p>
+                  <div class="event-actions">
+                    <button class="btn small"  onclick="window.open('https://www.instagram.com/p/DRBI_iqEfNA/?igsh=eXhlZXczbnVrOW1u', '_blank')">>Ver Mais</button>
+                  </div>
+                </article>
+
+                <article class="event-slide">
+                  <h4 class="event-name">Festa Red</h4>
+                  <div class="event-meta">Em breve • 21:00</div>
+                  <p class="event-desc">Monte seu fit vermelho e venha pra RED!</p>
+                  <div class="event-actions">
+                    <button class="btn small">Ver Mais</button>
+                  </div>
+                </article>
+
+                <article class="event-slide">
+                  <h4 class="event-name">Festa Fantasia</h4>
+                  <div class="event-meta">Em breve • 21:00</div>
+                  <p class="event-desc">KKKK, vamos nos divertir, coloquem suas mascaras e fantasias. Estamos aguardando vocês</p>
+                  <div class="event-actions">
+                    <button class="btn small">Ver Mais</button>
+                  </div>
+                </article>
+
+                <article class="event-slide">
+                  <h4 class="event-name">Festa do Semáforo</h4>
+                  <div class="event-meta">Em breve • 21:00</div>
+                  <p class="event-desc">Ja ouviu falar na festa do semáforo? Vem cá conhecer.</p>
+                  <div class="event-actions">
+                    <button class="btn small">Ver Mais</button>
+                  </div>
+                </article>
+
+                <article class="event-slide">
+                  <h4 class="event-name">Festa de Gala</h4>
+                  <div class="event-meta">Em breve • 21:00</div>
+                  <p class="event-desc">Só de ser RED você já é um luxo né? Mas ja imaginou colocar essa luxuosidade num traje de gala?</p>
+                  <div class="event-actions">
+                    <button class="btn small">Ver Mais</button>
+                  </div>
+                </article>
+
+                <article class="event-slide">
+                  <h4 class="event-name">Pool Party</h4>
+                  <div class="event-meta">Em breve • 15:00</div>
+                  <p class="event-desc">Roupas de banho? 😏 hehe. Venham para Pool Party da RED.</p>
+                  <div class="event-actions">
+                    <button class="btn small">Ver Mais</button>
+                  </div>
+                </article>
+
+                <article class="event-slide">
+                  <h4 class="event-name">Festa Cowboy</h4>
+                  <div class="event-meta">Em breve • 21:00</div>
+                  <p class="event-desc">Aoba! Cês tão bão? Ja arriemo uma "nuvia" novinha pra mandar pra brasa enquanto tomemo um gole.</p>
+                  <div class="event-actions">
+                    <button class="btn small">Ver Mais</button>
+                  </div>
+                </article>
+              </div>
+              <button class="carousel-nav next" data-action="next" aria-label="Próximo">&gt;</button>
+            </div>
+            <div class="carousel-dots" id="carouselDots" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <aside class="hero-right">
+          <h3>Próximo evento</h3>
+          <p>Desfile Victoria Secrets — Em breve</p>
+        </aside>
+      </section>
+
+      <!-- ADM GRID DINÂMICO -->
+      <section class="section admins">
+        <h3>Equipe Administrativa</h3>
+        <div class="admins-grid" id="adminsGrid">
+          <!-- Exemplo: 12 cards -- substitua conteúdo/avatar/links conforme precisar -->
+          <!-- Card 1 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_bella.png" alt="BellaF"></div>
+            <div class="meta">
+              <h4>Bella <span class="role">@bellafh</span></h4>
+              <p class="status online">Host • CEO</p>
+              <a href="https://instagram.com/bellafvuu" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+            <div class="tag">DONA</div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_isa.png" alt="foto"></div>
+            <div class="meta">
+              <h4>Isa <span class="role">@lsinha.vu</span></h4>
+              <p class="status online">ADM · Geral</p>
+              <a href="https://instagram.com/lsinha.vu" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+            <div class="tag">ADM</div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_lexy.png" alt="foto"></div>
+            <div class="meta">
+              <h4>Lexy <span class="role">@lexy.svu</span></h4>
+              <p class="status online">ADM · Geral</p>
+              <a href="https://instagram.com/lexy.svu" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+            <div class="tag">ADM</div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens" alt="foto"></div>
+            <div class="meta">
+              <h4>Lia <span class="role">@lia.vuuuu</span></h4>
+              <p class="status online">ADM · Geral</p>
+              <a href="https://instagram.com/lia.vuuuu" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+              <div class="tag">ADM</div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_lynn.png" alt="foto"></div>
+            <div class="meta">
+              <h4>Lynn <span class="role">@lynnal__</span></h4>
+              <p class="status online">ADM · Geral</p>
+              <a href="https://instagram.com/" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+            <div class="tag">ADM</div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_mih.png" alt="foto"></div>
+            <div class="meta">
+              <h4>Mih <span class="role">@mihvu7</span></h4>
+              <p class="status online">ADM · Geral</p>
+              <a href="https://instagram.com/mihvu7" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+              <div class="tag">ADM</div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_yu.png" alt="foto"></div>
+            <div class="meta">
+              <h4>Yullay <span class="role">@yullay._</span></h4>
+              <p class="status online">ADM · Organizadora</p>
+              <a href="https://instagram.com/yullay._" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+              <div class="tag">ADM</div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_moana.png" alt="foto"></div>
+            <div class="meta">
+              <h4>Moana <span class="role">@moanavuu</span></h4>
+              <p class="status online">ADM · Organizadora</p>
+              <a href="https://instagram.com/moanavuu" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+              <div class="tag">ADM</div>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_sun.png" alt="foto"></div>
+            <div class="meta">
+              <h4>Sun <span class="role">@sidesunvuu</span></h4>
+              <p class="status online">ADM · Organizadora</p>
+              <a href="https://instagram.com/sidesunvuu" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+            <div class="tag">ADM</div>
+          </div>
+
+          <!-- Card 10 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens" alt="foto"></div>
+            <div class="meta">
+              <h4>Lilith <span class="role">@lilithazkael</span></h4>
+              <p class="status online">ADM · Organizadora</p>
+              <a href="https://instagram.com/lilithazkael" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+              <div class="tag">ADM</div>
+          </div>
+
+          <!-- Card 11 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_beck.png" alt="foto"></div>
+            <div class="meta">
+              <h4>Beck <span class="role">@kauazx_18</span></h4>
+              <p class="status online">ADM · Suporte</p>
+              <a href="https://instagram.com/kauazx_18" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+            <div class="tag">ADM</div>
+          </div>
+
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_ninho.png" alt="foto"></div>
+            <div class="meta">
+              <h4>Ninho <span class="role">@l._.ninho</span></h4>
+              <p class="status online">ADM · Suporte</p>
+              <a href="https://instagram.com/l._.ninho" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+            <div class="tag">ADM</div>
+          </div>
+
+          <!-- Card 12 -->
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_chico.png" alt="foto"></div>
+            <div class="meta">
+              <h4>Chico<span class="role">@chiquitovuu</span></h4>
+              <p class="status online">ADM · Suporte</p>
+              <a href="https://instagram.com/chiquitovuu" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+              <div class="tag">ADM</div>
+          </div>
+
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_tazs.png" alt="foto"></div>
+            <div class="meta">
+              <h4>Tazs<span class="role">@tazs_vuu</span></h4>
+              <p class="status online">ADM · Suporte</p>
+              <a href="https://instagram.com/tazs_vuu" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+              <div class="tag">ADM</div>
+          </div>
+
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_ayez.png" alt="Marina"></div>
+            <div class="meta">
+              <h4>Ayez<span class="role">@haih_vu</span></h4>
+              <p class="status online">ADM · Suporte</p>
+              <a href="https://instagram.com/haih_vu" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+              <div class="tag">ADM</div>
+          </div>
+
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_doug.png" alt="Marina"></div>
+            <div class="meta">
+              <h4>Doug<span class="role">@dougzin23</span></h4>
+              <p class="status online">ADM · Suporte</p>
+              <a href="https://instagram.com/dougzin23" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+              <div class="tag">ADM</div>
+          </div>
+
+          <div class="admin">
+            <div class="avatar"><img src="/imagens/adm_vitin.png" alt="Marina"></div>
+            <div class="meta">
+              <h4>VITIN<span class="role">@vitinx.vu</span></h4>
+              <p class="status online">ADM · DEV</p>
+              <a href="https://instagram.com/vitinx.vu" class="insta-btn" target="_blank" rel="noopener">Instagram</a>
+            </div>
+              <div class="tag">ADM</div>
+          </div>
+
+        </div>
+      </section>
+
+      <footer>
+        <div>© <strong>Red Room</strong> • Comunidade IMVU</div>
+        <div>Feito com ♥</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- JS externo -->
+  <script src="script.js"></script>
+</body>
+</html>
